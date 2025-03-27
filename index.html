@@ -19,19 +19,38 @@
     </header>
 
     <main>
+        <section class="town">
+            <div class="card">
+                <h2>Tavern 🛖</h2>
+                <p>Rest to heal</p>
+                <button onclick="healHero()">🛏️</button>
+            </div>
+
+            <div class="card">
+                <h2>Cobbler👢</h2>
+                <p>Get bigger boots!</p>
+                <button onclick="buyBoots()">👢</button>
+            </div>
+        </section>
+
         <section class="dungeon">
             <div class="monster-card">
                 <img src="assets\Monsters\Goblin.png" alt="" id="monster-picture">
                 <p id="monster-stats">Gilbert</p>
+                <div>
+                    <button onclick="squashMonster()">🥾</button>
+                </div>
             </div>
 
         </section>
-        <div>
-            <button onclick="squashMonster()">🥾</button>
-        </div>
 
-        <section class="hero"></section>
-        <img src="assets\Players\HeroPortrait2.png" alt="">
+        <section class="hero">
+            <img src="assets\Players\HeroPortrait2.png" alt="" id="hero-img">
+            <div>
+                <p id="hero-name"></p>
+                <div id="hero-stats"></div>
+            </div>
+        </section>
     </main>
 
     <script src="app.js"></script>

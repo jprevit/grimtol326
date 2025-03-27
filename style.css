@@ -10,13 +10,33 @@ header {
     text-align: center;
 }
 
+.card {
+    background-color: gray;
+    border: double gold 5px;
+    padding: 1em;
+    font-size: larger;
+}
+
+.town {
+    background-image: url(assets/Backgrounds/townbg.png);
+}
+
 .dungeon {
     background-image: url(assets/Backgrounds/dungeonbg.png);
+
+    p {
+        font-size: 50px;
+    }
+}
+
+.dungeon,
+.town {
     background-position: center;
     background-size: cover;
     display: flex;
     justify-content: center;
     text-align: center;
+    padding: 10px;
 
 
     img {
@@ -24,7 +44,23 @@ header {
         height: 355px;
     }
 
-    p {
-        font-size: 50px;
+
+    button {
+        font-size: 40px;
+        background-color: gray;
+        border: double gold 8px;
     }
+}
+
+.hero {
+    border: double gold 5px;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    align-items: center;
+    font-size: 25px;
+    height: 20dvh;
+    position: sticky;
+    bottom: 0px;
 }
