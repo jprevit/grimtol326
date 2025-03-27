@@ -23,13 +23,7 @@ let hero = {
 
 let bootCost = hero.bootSize * 30
 
-let monster = {
-    name: 'Gilbert',
-    hitPoints: 4,
-    attackPower: 1,
-    reward: 5,
-    picture: 'assets/Monsters/Goblin.png'
-}
+
 
 // let sillyList = [
 //     12,
@@ -39,6 +33,13 @@ let monster = {
 // ]
 
 let monsterList = [
+    {
+        name: 'Gilbert',
+        hitPoints: 4,
+        attackPower: 1,
+        reward: 5,
+        picture: 'assets/Monsters/Goblin.png'
+    },
     {
         name: 'Roger',
         hitPoints: 8,
@@ -75,6 +76,15 @@ let monsterList = [
         picture: 'assets/Monsters/Slime.png'
     },
 ]
+//  This takes the monster list, starts at the first index in the array, and decides whether to move it further down the indices of the array
+monsterList
+    .sort(() => Math.random() > .5 ? 1 : -1)
+    .sort(() => Math.random() > .5 ? 1 : -1)
+    .sort(() => Math.random() > .5 ? 1 : -1)
+    .sort(() => Math.random() > .5 ? 1 : -1)
+    .sort(() => Math.random() > .5 ? 1 : -1)
+
+let monster = monsterList[0]
 
 function squashMonster() {
     monster.hitPoints -= hero.attackPower
