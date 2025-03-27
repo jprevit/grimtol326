@@ -49,6 +49,7 @@ header {
         font-size: 40px;
         background-color: gray;
         border: double gold 8px;
+        color: gold;
     }
 }
 
@@ -63,4 +64,34 @@ header {
     height: 20dvh;
     position: sticky;
     bottom: 0px;
+}
+
+.dead,
+.win {
+    text-align: center;
+    font-size: 100px;
+}
+
+.dead {
+
+    color: red;
+}
+
+.win {
+    color: aquamarine;
+    animation: rotate .2s infinite;
+}
+
+@keyframes rotate {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+
+    50% {
+        filter: hue-rotate(180deg)
+    }
+
+    100% {
+        filter: hue-rotate(345deg)
+    }
 }

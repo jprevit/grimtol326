@@ -8,6 +8,9 @@ let heroNameElm = document.getElementById('hero-name')
 let heroStatsElm = document.getElementById('hero-stats')
 let monsterImgElm = document.getElementById('monster-picture')
 let monsterStatsElm = document.getElementById('monster-stats')
+let tavernCostElm = document.getElementById('tavern-cost')
+let bootCostElm = document.getElementById('boot-cost')
+let tavernCost = 2
 
 let hero = {
     name: 'Geophrey',
@@ -18,11 +21,13 @@ let hero = {
     bootSize: 1
 }
 
+let bootCost = hero.bootSize * 30
+
 let monster = {
     name: 'Gilbert',
     hitPoints: 4,
     attackPower: 1,
-    reward: 2,
+    reward: 5,
     picture: 'assets/Monsters/Goblin.png'
 }
 
@@ -45,7 +50,7 @@ let monsterList = [
         name: 'Robert',
         hitPoints: 9,
         attackPower: 4,
-        reward: 0,
+        reward: 15,
         picture: 'assets/Monsters/AnimatedArmor.png',
     },
     {
@@ -75,9 +80,9 @@ function squashMonster() {
     monster.hitPoints -= hero.attackPower
     console.log(`${monster.name} has ${monster.hitPoints} remaining`);
     if (monster.hitPoints < 1) {
-        console.log(hero.gold);
-        hero.gold += monster.reward
-        console.log(hero.gold);
+        // console.log(hero.gold);
+        hero.gold += Math.ceil(Math.random() * monster.reward)
+        // console.log(hero.gold);
         swapMonster()
     } else {
         attackHero()
@@ -88,20 +93,25 @@ function squashMonster() {
 
 function attackHero() {
     hero.hitPoints -= Math.ceil(Math.random() * monster.attackPower)
+    if (hero.hitPoints <= 0) {
+        let body = document.body
+
+        body.innerHTML = `<h1 class="dead">You Died!</h1>`
+    }
 }
 
 function healHero() {
-    if (hero.gold < 1) {
+    if (hero.gold < tavernCost) {
         window.alert('You broke homez!')
         return
     }
     hero.hitPoints += 5
-    hero.gold -= 1
+    hero.gold -= tavernCost
     drawHero()
 }
 
 function buyBoots() {
-    let bootCost = hero.bootSize * 30
+
 
     if (hero.gold < bootCost) {
         window.alert('No boot for you!')
@@ -110,14 +120,17 @@ function buyBoots() {
     hero.attackPower += 5
     hero.gold -= bootCost
     hero.bootSize++
+    bootCost = hero.bootSize * 30
     drawHero()
+    drawBills()
 }
 
 function swapMonster() {
     let nextMonster = monsterList.shift()
 
     if (!nextMonster) {
-        window.alert('You win, the dungeon is empty! You have devastated an entire ecosystem!')
+
+        document.body.innerHTML = '<h1 class="win">You win, the dungeon is empty! You have devastated an entire ecosystem!</h1>'
     } else {
         monster = nextMonster
     }
@@ -129,8 +142,11 @@ function drawMonster() {
     monsterStatsElm.innerText = `${monster.name} | ${monster.hitPoints}`
 }
 
-function drawBills() {
 
+
+function drawBills() {
+    tavernCostElm.innerHTML = `<p>${tavernCost}🛏️</p>`
+    bootCostElm.innerHTML = `<p>${bootCost}👢</p>`
 }
 
 function drawHero() {
@@ -141,3 +157,4 @@ function drawHero() {
 
 drawHero()
 drawMonster()
+drawBills()
