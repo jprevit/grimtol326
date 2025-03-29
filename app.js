@@ -3,6 +3,8 @@
 // let goblinAP = 3
 // let goblinReward = 2
 
+// Global variables
+
 let heroImgElm = document.getElementById('hero-img')
 let heroNameElm = document.getElementById('hero-name')
 let heroStatsElm = document.getElementById('hero-stats')
@@ -11,6 +13,8 @@ let monsterStatsElm = document.getElementById('monster-stats')
 let tavernCostElm = document.getElementById('tavern-cost')
 let bootCostElm = document.getElementById('boot-cost')
 let tavernCost = 2
+
+// Hero section
 
 let hero = {
     name: 'Geophrey',
@@ -86,6 +90,9 @@ monsterList
 
 let monster = monsterList[0]
 
+
+// Game Logic
+
 function squashMonster() {
     monster.hitPoints -= hero.attackPower
     console.log(`${monster.name} has ${monster.hitPoints} remaining`);
@@ -147,6 +154,8 @@ function swapMonster() {
 
 }
 
+// Draw functions
+
 function drawMonster() {
     monsterImgElm.setAttribute('src', `${monster.picture}`)
     monsterStatsElm.innerText = `${monster.name} | ${monster.hitPoints}`
@@ -160,9 +169,19 @@ function drawBills() {
 }
 
 function drawHero() {
-    heroImgElm.setAttribute('src', `${hero.picture}`)
-    heroNameElm.innerText = hero.name
-    heroStatsElm.innerText = `${hero.hitPoints}💗| ${hero.attackPower}🗡️| ${hero.gold}🪙`
+    let heroElm = document.getElementById('hero')
+
+    heroElm.innerHTML = `
+    <img src="${hero.picture}" alt="" id="hero-img">
+    <div>
+        <p id="hero-name">${hero.name}</p>
+        <div id="hero-stats">${hero.hitPoints}💗| ${hero.attackPower}🗡️| ${hero.gold}🪙</div>
+    </div>
+    `
+
+    // heroImgElm.setAttribute('src', `${hero.picture}`)
+    // heroNameElm.innerText = hero.name
+    // heroStatsElm.innerText = ``
 }
 
 drawHero()
